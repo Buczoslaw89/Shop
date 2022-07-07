@@ -1,0 +1,55 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div id="slider">
+    <div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 686px;"><ul style="width: auto; position: relative;">
+        <li style="background-image: url({% static '/images/0.jpg' %}); float: none; list-style: none ; position: absolute; width: 1467px; z-index: 50; display: block;">
+            <h3>Uczyń swoje życie lepszym</h3>
+            <h2>Prawdziwe diamenty</h2>
+            <a href="{% url 'store' %}" class="btn-more">Więcej</a>
+        </li>
+        <li class="purple" style="background-image: url({% static '/images/01.jpg' %}); float: none; list-style: none; position: absolute; width: 1467px; z-index: 0; display: none;">
+            <h3>Na pewno powie "Tak"</h3>
+            <h2>Pierścionki zaręczynowe</h2>
+            <a href="{% url 'store' %}" class="btn-more">Więcej</a>
+        </li>
+        <li class="yellow" style="background-image: url({% static '/images/02.jpg' %}); float: none; list-style: none; position: absolute; width: 1467px; z-index: 0; display: none;">
+            <h3>Zasługujesz na piękno</h3>
+            <h2>Złote bransoletki</h2>
+            <a href="{% url 'store' %}" class="btn-more">Więcej</a>
+        </li>
+    </ul></div><div class="bx-controls bx-has-pager"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link active">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div></div></div></div>
+</div>
+
+<div id="body">
+    <div class="container">
+        <div class="last-products">
+            <h2>Polecane produkty</h2>
+            <div id="container">
+                {% for product in products %}
+                <div class="column">
+                    <article>
+                        <img class="thumbnail" src="{{product.imageURL}}" alt="">
+                        <h3>{{product.name}}</h3>
+                        <h4>{{product.price}} zł</h4>
+                        <a data-product={{product.id}} data-action="add" class="btn-add update-cart">Dodaj do
+                            koszyka</a>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="bx-controls bx-has-controls-direction">
+                <div class="bx-controls-direction">
+                    <a class="bx-prev disabled" href="">Prev</a>
+                    <a class="bx-next disabled" href="">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

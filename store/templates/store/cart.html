@@ -1,0 +1,46 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<!-- / body -->
+<div id="body">
+	<div class="container">
+		<div id="content" class="full">
+			<div class="cart-table">
+				<table>
+					<tr>
+						<th class="items">Przedmioty</th>
+						<th class="price">Cena</th>
+						<th class="qnt">Ilość</th>
+						<th class="total">Podsumowanie</th>
+						<th class="delete"></th>
+					</tr>
+					<tr>
+						{% for item in items %}
+						<td class="items">
+							<div class="image row-image">
+								<img src="{{item.product.imageURL}}" alt="">
+							</div>
+							<h6>{{item.product.name}}</h6>
+						</td>
+						<td class="price">{{item.product.price}} zł</td>
+						<td class="qnt">{{item.quantity}}</td>
+						<td class="total">{{item.get_total}} zł</td>
+						<td class="delete quantity"><a data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart ico-del"></a></td>
+					</tr>
+						{% endfor %}
+				</table>
+			</div>
+
+			<div class="total-count">
+				<h4>Cena przedmiotów: {{order.get_cart_total}} zł</h4>
+				<p>+wysyłka: 30.00 zł</p>
+				<h4>Do zapłaty: {{order.get_cart_total}} zł</h4>
+				<button onclick="location.href='{% url 'checkout' %}'" class="btn-sbmt">Przejdź do kasy</button>
+			</div>
+		
+		</div>
+		<!-- / content -->
+	</div>
+	<!-- / container -->
+</div>
+{% endblock content %}

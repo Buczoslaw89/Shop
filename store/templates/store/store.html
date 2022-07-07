@@ -1,0 +1,20 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div id="body">
+    <div class="container">
+        <div id="container">
+            {% for product in products %}
+            <div class="column">
+                <article>
+                    <img class="thumbnail" src="{{product.imageURL}}" alt="">
+                    <h3>{{product.name}}</h3>
+                    <h4>{{product.price}} zł</h4>
+                    <a data-product={{product.id}} data-action="add" class="btn-add update-cart">Dodaj do koszyka</a>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
